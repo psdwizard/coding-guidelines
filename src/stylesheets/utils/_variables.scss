@@ -1,0 +1,46 @@
+//main: ../main.scss
+
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Regular font family
+/// @type List
+$text-font-stack: 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Inconsolata', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+/// Copy text color
+/// @type Color
+$text-color: #222 !default;
+
+/// Main brand color
+/// @type Color
+$brand-color: #E50050 !default;
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '../assets/' !default;
+
+// Other Variables
+
+$white: #ffffff;
+$black: #000000;
+
+$yellow: #ffc600;
+$pastel-yellow: #fbea7d;
+$orange: #ff9d00;
+$mint: #2affdf;
+$blue: #193549;
+$off-blue: #0d3a58;
+$dusty-blue: #35434d;
+$dark-blue: #15232d;
+$pink: #fb94ff;
+$light-blue: #9effff;
+$pastel-green: #8fe783;
+$pine-green: #30d403;
+$pastel-blue: #0186f6;
