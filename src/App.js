@@ -7,7 +7,7 @@ import {
 import { hot } from 'react-hot-loader'
 
 import Header from './components/header'
-import Footer from './components/footer'
+// import Footer from './components/footer'
 import Home from './containers/home'
 import About from './containers/about'
 import NoRouteMatch from './containers/404'
@@ -24,7 +24,7 @@ class App extends Component {
             <Route component={NoRouteMatch} />
           </Switch>
 
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </HashRouter>
     );

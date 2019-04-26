@@ -6,7 +6,7 @@
 
 /// Regular font family
 /// @type List
-$text-font-stack: 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$text-font-stack: 'Roboto', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
 /// Code (monospace) font family
 /// @type List
@@ -14,7 +14,7 @@ $code-font-stack: 'Inconsolata', 'Courier New', 'DejaVu Sans Mono', 'Bitstream V
 
 /// Copy text color
 /// @type Color
-$text-color: #222 !default;
+$text-color: #5a5a5a !default;
 
 /// Main brand color
 /// @type Color
@@ -30,6 +30,8 @@ $base-url: '../assets/' !default;
 
 $white: #ffffff;
 $black: #000000;
+
+$off-white: #e2dcde;
 
 $yellow: #ffc600;
 $pastel-yellow: #fbea7d;
