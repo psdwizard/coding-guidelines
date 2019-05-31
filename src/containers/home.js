@@ -845,7 +845,7 @@ const htmlRules = [
 
 <a href="#" id="..." class="..." data-toggle="modal">Link</a>
 
-<input class="form-control" type="text" />
+<input id="my-id" class="form-control" type="text" />
 
 <img src="..." id="..." class="..." alt="..." />`}    
 </SyntaxHighlighter>
