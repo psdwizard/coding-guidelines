@@ -1,13 +1,13 @@
 {
-  "main.css": "/coding-standards/static/css/main.b09e6cb5.chunk.css",
-  "main.js": "/coding-standards/static/js/main.71975bf0.chunk.js",
-  "main.js.map": "/coding-standards/static/js/main.71975bf0.chunk.js.map",
-  "runtime~main.js": "/coding-standards/static/js/runtime~main.7349e273.js",
-  "runtime~main.js.map": "/coding-standards/static/js/runtime~main.7349e273.js.map",
-  "static/js/2.c7691db7.chunk.js": "/coding-standards/static/js/2.c7691db7.chunk.js",
-  "static/js/2.c7691db7.chunk.js.map": "/coding-standards/static/js/2.c7691db7.chunk.js.map",
-  "index.html": "/coding-standards/index.html",
-  "precache-manifest.f905b5a66bde48e24cc4a59913596f49.js": "/coding-standards/precache-manifest.f905b5a66bde48e24cc4a59913596f49.js",
-  "service-worker.js": "/coding-standards/service-worker.js",
-  "static/css/main.b09e6cb5.chunk.css.map": "/coding-standards/static/css/main.b09e6cb5.chunk.css.map"
+  "main.css": "/coding-guidelines/static/css/main.18c10eb9.chunk.css",
+  "main.js": "/coding-guidelines/static/js/main.252fbe8d.chunk.js",
+  "main.js.map": "/coding-guidelines/static/js/main.252fbe8d.chunk.js.map",
+  "runtime~main.js": "/coding-guidelines/static/js/runtime~main.49e9955e.js",
+  "runtime~main.js.map": "/coding-guidelines/static/js/runtime~main.49e9955e.js.map",
+  "static/js/2.020e5626.chunk.js": "/coding-guidelines/static/js/2.020e5626.chunk.js",
+  "static/js/2.020e5626.chunk.js.map": "/coding-guidelines/static/js/2.020e5626.chunk.js.map",
+  "index.html": "/coding-guidelines/index.html",
+  "precache-manifest.1e788120332640486de744b9dd55f9f9.js": "/coding-guidelines/precache-manifest.1e788120332640486de744b9dd55f9f9.js",
+  "service-worker.js": "/coding-guidelines/service-worker.js",
+  "static/css/main.18c10eb9.chunk.css.map": "/coding-guidelines/static/css/main.18c10eb9.chunk.css.map"
 }
