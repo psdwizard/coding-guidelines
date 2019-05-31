@@ -9,7 +9,6 @@ import { hot } from 'react-hot-loader'
 import Header from './components/header'
 // import Footer from './components/footer'
 import Home from './containers/home'
-import About from './containers/about'
 import NoRouteMatch from './containers/404'
 class App extends Component {
   render() {
@@ -20,7 +19,6 @@ class App extends Component {
 
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/about" component={About} />
             <Route component={NoRouteMatch} />
           </Switch>
 

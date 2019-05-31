@@ -13,9 +13,19 @@
   border-top: 1px $dark-blue solid;
 }
 
+.row-category {
+  padding: 40px 40px;
+
+  font-size: 48px;
+
+  background-color: darken($blue, 5%);
+}
+
 .rule {
   flex: 0 0 50%;
   padding: 60px 40px;
+
+  font-size: 32px;
 
   // border-right: 1px #3685B5 solid;
 }
@@ -24,4 +34,22 @@
   flex: 0 0 50%;
   padding: 60px 40px;
   overflow: hidden;
+
+  font-size: 32px;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px #122736;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: lighten(#193549, 10%); 
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
