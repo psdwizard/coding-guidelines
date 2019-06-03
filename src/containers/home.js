@@ -348,7 +348,7 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Use classes to avoid deep nesting and for specific context`,
+    rule: `Use classes to avoid deep nesting and for specific context. Except when dealing with 3rd party plugin/CMS content generated HTML nodes where customization of classes is not possible.`,
     example: 
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -418,12 +418,16 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Always use colors as variable, all located at _variables.scss`,
+    rule: `Always use colors as variable, all located at _variables.scss. Use contextual phrases for primary and secondary palettes. Use numerics for neutral shades in increments of 100's`,
     example: 
 <SyntaxHighlighter {...cssHighlightProps}>
-{`$yellow: #ffc30b;
-$yellow-lemon: #fadase;
-$yellow-mellow: #f8de7e;`}    
+{`$primary-color: #ffc30b;
+$secondary-color: #fadase;
+
+$gray-100: ...
+$gray-200: ...
+$gray-300: ...
+$gray-400: ...`}    
 </SyntaxHighlighter>
   },
   {
@@ -829,11 +833,11 @@ const htmlRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Don’t include a trailing slash in self-closing elements - this is optional as per HTML5 Spec.`,
+    rule: `Include a trailing slash in self-closing elements. This is to be consistent with JS frameworks like React.`,
     example:
 <SyntaxHighlighter {...htmlHighlightProps}>
 {`<body>
-  <img src="img/logo.png" alt="Company">
+  <img src="img/logo.png" alt="Company" />
 </body>`}    
 </SyntaxHighlighter>
   },
@@ -938,6 +942,88 @@ const htmlRules = [
 <input type="email" placeholder="Email" />
 <input type="tel" placeholder="Phone" />
 <input type="password" placeholder="Password" />`}
+</SyntaxHighlighter>
+  },
+  {
+    rule: `When naming elements based on position, use ordinal over cardinal. Cardinal terms like 'left' and 'right' are confusing for RTL Bidirectional layouts`,
+    example: <SyntaxHighlighter {...htmlHighlightProps}>
+{`<!-- DON'T -->
+<div class="left-side"></div>
+<div class="right-side"></div>
+
+<!-- DO -->
+<div class="first-side"></div>
+<div class="second-side"></div>`}
+</SyntaxHighlighter>
+  },
+  {
+    rule: `Use 'wrapper' as parent level container and 'holder' if there are nested containers inside. If you need another container inside after 'holder', this is usually a sign of bad HTML structure or poor implementation of flex. Restructure your elements.`,
+    example: <SyntaxHighlighter {...htmlHighlightProps}>
+{`
+<div class="something-wrapper">
+  ...
+  <div class="something-holder">
+    ...
+  </div>
+</div>
+`}
+</SyntaxHighlighter>
+  },
+  {
+    rule: `Follow 'something-wrapper' and 'something-holder' as class name order when using custom containers. To resolve the issue where multiple holder (image-holder, text-holder) of multiple types that may conflict with the rule above where semantic context precedes specifc context (icon-fb, icon-tw, etc.), group multiple types into a collective term.`,
+    example: <SyntaxHighlighter {...htmlHighlightProps}>
+{` <!-- DON'T -->
+<div class="something-wrapper">
+  <div class="image-holder">...</div>
+  <div class="text-holder">...</div>
+</div>
+
+<!-- DO -->
+<div class="something-wrapper">
+  <div class="card-holder"></div>
+</div>
+`}
+</SyntaxHighlighter>
+  },
+  {
+    rule: `Use 'id' only when an element has a unique behavior. Use 'class' for styles. Use 'js-class' for generic/group behavior`,
+    example: <SyntaxHighlighter {...htmlHighlightProps}>
+{` <!-- DON'T -->
+<div id="sample-one">
+  ...
+  <div id="accordion-one">Header 1</div>
+  <div id="accordion-two">Header 2</div>
+  <div id="accordion-three">Header 3</div>
+</div>
+
+<style>
+  #sample-one {
+    //Don't style id's
+  }
+</style>
+
+<script>
+  $('#accordion-one')...
+</script>
+
+<!-- DO -->
+<div class="sample-one">
+  ...
+  <div class="js-accordion">Header 1</div>
+  <div class="js-accordion">Header 2</div>
+  <div class="js-accordion">Header 3</div>
+</div>
+
+<style>
+  .sample-one {
+    //Style classes instead
+  }
+</style>
+
+<script>
+  $('.js-accordion')...
+</script>
+`}
 </SyntaxHighlighter>
   },
 ]
