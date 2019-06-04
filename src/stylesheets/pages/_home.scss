@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-.row {
+.section {
   display: flex;
   width: 100%;
 
@@ -13,7 +13,7 @@
   border-top: 1px $dark-blue solid;
 }
 
-.row-category {
+.category {
   padding: 40px 40px;
 
   font-size: 48px;
@@ -25,9 +25,13 @@
   flex: 0 0 50%;
   padding: 60px 40px;
 
-  font-size: 32px;
+  font-size: 24px;
+}
 
-  // border-right: 1px #3685B5 solid;
+.rule-monocol {
+  padding: 60px 40px;
+
+  font-size: 24px;
 }
 
 .sample {
@@ -35,7 +39,7 @@
   padding: 60px 40px;
   overflow: hidden;
 
-  font-size: 32px;
+  font-size: 24px;
 }
 
 ::-webkit-scrollbar {

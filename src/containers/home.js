@@ -1031,10 +1031,30 @@ export default class Home extends Component {
   render() {    
     return (
       <div className="container">
-        <div className="row row-category">CSS Rules</div>
+        <div className="section category">Golden Rule</div>
+        <div className="section">
+          <div className="rule">
+            Enforce these agreed upon guidelines at all times. Small or large, call out what's incorrect. This applies for everyone, project members and leaders alike.
+          </div>
+          <div className="sample hljs">
+            Every line of code should appear to be written by a single person, no matter the number of contributors.
+          </div>
+        </div>
+
+        <div className="section category">Silver Rule</div>
+        <div className="section">
+          <div className="rule">
+            Special client requests supercede any of the rules below.
+          </div>
+          <div className="sample hljs">
+            This is held true for all and any rule types.
+          </div>
+        </div>
+
+        <div className="section category">CSS Rules</div>
         {
           cssRules.map((item, i) => (
-            <div className="row" key={i}>
+            <div className="section" key={i}>
               <div className="rule">
                 {item.rule}
               </div>
@@ -1045,15 +1065,15 @@ export default class Home extends Component {
           ))
         }
 
-        <div className="row row-category">CSS Style Declaration Ideal Order</div>
-        <div className="row" style={{padding: '60px 40px', fontSize: '32px'}}>
+        <div className="section category">CSS Style Declaration Ideal Order</div>
+        <div className="section rule-monocol">
           {cssStyeDeclaration}
         </div>
 
-        <div className="row row-category">HTML Rules</div>
+        <div className="section category">HTML Rules</div>
         {
           htmlRules.map((item, i) => (
-            <div className="row" key={i}>
+            <div className="section" key={i}>
               <div className="rule">
                 {item.rule}
               </div>
