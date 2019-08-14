@@ -1,6 +1,28 @@
 .container {
-  width: 100%;
   margin: 0 auto;
+  width: 100%;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75px;
+
+  cursor: pointer;
+}
+
+.caret {
+  margin-bottom: 5px;
+  width: 25px;
+}
+
+.cat {
+  width: 100%;
 }
 
 .section {
@@ -26,6 +48,17 @@
   padding: 60px 40px;
 
   font-size: 24px;
+}
+
+.rule-hover-scope {
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s;
+
+  &.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 .rule-monocol {

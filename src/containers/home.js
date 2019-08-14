@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { HashLink } from 'react-router-hash-link'
 
+import clsx from 'clsx'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 
 import '../stylesheets/main.scss'
@@ -16,7 +18,8 @@ const htmlHighlightProps = {
 
 const cssRules = [
   {
-    rule: `Always leave a line space between each section. Even when a class has a single property.`,
+    rule: `Add a line break between selectors. Even when they only have a single css property.`,
+    summary: `Add a line break between selectors`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`.foo {
@@ -30,7 +33,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Avoid using !important.`,
+    rule: `Avoid !important. Use it only as an absolute last resort.`,
+    summary: `Avoid !important`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -49,7 +53,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Preconfigure your IDE to use soft tabs with two spaces.`,
+    rule: `Configure dev environment to soft tabs with two (2) spaces.`,
+    summary: `Use soft tabs, two spaces`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`.foo {
@@ -59,6 +64,7 @@ const cssRules = [
   },
   {
     rule: `When grouping selectors, keep individual selectors to a single line.`,
+    summary: `Keep individual selectors to a single line`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -75,7 +81,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: <span>Don't include spaces after commas within <SyntaxHighlighter {...cssHighlightProps} CodeTag="span" PreTag="span">rgb(), rgba(), hsl(), hsla(), or rect()</SyntaxHighlighter> values. This helps differentiate multiple color values (comma, no space) from multiple property values (comma with space).</span>,
+    rule: <span>No spaces after commas within <SyntaxHighlighter {...cssHighlightProps} CodeTag="span" PreTag="span">rgb(), rgba(), hsl(), hsla(), or rect()</SyntaxHighlighter> values. This differentiates multiple color values (comma, no space) versus multiple property values (comma with space).</span>,
+    summary: `No spaces within color function values`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -91,8 +98,9 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Remove leading zeroes for prefix property values or color parameters.`,
-    example:
+    rule: `No leading zeroes for property values or color parameters.`,
+    summary: `No leading zeroes`,
+    example: 
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
 .foo {
@@ -111,8 +119,9 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Avoid specifying units for zero values, e.g., margin: 0; instead of margin: 0px;.`,
-    example:
+    rule: `No units for zeroes (margin: 0; instead of margin: 0px;).`,
+    summary: `No units for zeroes`,
+    example: 
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
 .foo {
@@ -127,7 +136,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Use shorthand hex values where available (e.g., #fff instead of #ffffff).`,
+    rule: `Use shorthand hex values where possible (e.g., #fff instead of #ffffff).`,
+    summary: `Use shorthand hex where possible`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -144,6 +154,7 @@ const cssRules = [
   },
   {
     rule: `Lowercase all hex values (e.g., #fff).`,
+    summary: `Lowercase all hex`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -159,7 +170,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Quote attribute values in selectors, e.g., input[type=”text”]. They’re only optional in some cases, and it’s a good practice for consistency. Avoid using this type of selectors when input type is bound to change. Attribute value changes from HTML side will cause style inconsistencies.`,
+    rule: `Quote attribute values in selectors, e.g., input[type=”text”]. Avoid these selectors when input type is bound to change. Attribute value changes from HTML side will cause style inconsistencies.`,
+    summary: `Quote attribute values in selectors`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -175,7 +187,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Always add appropriate cursor types and transitions to inputs and elements with special behaviors`,
+    rule: `Add appropriate cursor types and transitions to all elements with special behaviors`,
+    summary: `Add cursor types and transitions`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//<button class="click-me">Clickable</button>
@@ -187,7 +200,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Keep classes lowercase and use dashes (not underscores or camelCase). Dashes serve as natural breaks in related class.`,
+    rule: `Keep classes lowercase and use dashes (not underscores or camelCase).`,
+    summary: `Keep classes lowercase and use dashes`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -205,6 +219,7 @@ const cssRules = [
   },
   {
     rule: `Keep selectors short and strive to limit the number of elements in each selector to three.`,
+    summary: `Keep selectors short`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -220,7 +235,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Always put a single space between the property and value and no space between the property and the colon.`,
+    rule: `Put a single space between the property and value and no space between the property and the colon.`,
+    summary: `Put a single space between property and value`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -244,7 +260,8 @@ const cssRules = [
   //   rule: `Mixins are always after the Miscellaneous section for sass (e.g., @include, @extend).`,
   // },
   {
-    rule: `Use @extend first before declaring other property values. Use other mixins like @include as needed. Be careful with @extend and other custom mixins. Establish @extend relationship only when the style is certainly extendable (e.g. buttons, links, etc.)`,
+    rule: `Use @extend at the beginning, right after the selector, before declaring other property values. Use other mixins like @include as needed. Be careful with @extend and other custom mixins. Use @extend only when the style is certainly extendable (e.g. buttons, links, etc.)`,
+    summary: `Use @extend at the beginning`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`.bar {
@@ -261,7 +278,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Put all media queries in a block at the very end. Even if they include one property value only. Media queries shall be put at the parent level, and never nested as a child. Arrange theme from large to small.`,
+    rule: `Put all media queries in a block at the very end even if they declare one property only. Put media queries at the parent level, never nested as a child. Arrange from large to small.`,
+    summary: `Put all media queries at end, at parent level. Arranged large to small`,
     example:
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -291,7 +309,8 @@ const cssRules = [
   // 	rule: `The rule above can be overruled when the query only applies to a single selector.`,
   // },
   {
-    rule: `Nest on sass if and only if the children components are extremely dependent on parent element`,
+    rule: `Nest smartly. Do it only if the children are extremely dependent on a parent element`,
+    summary: `Nest smartly`,
     example: 
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -348,7 +367,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Use classes to avoid deep nesting and for specific context. Except when dealing with 3rd party plugin/CMS content generated HTML nodes where customization of classes is not possible.`,
+    rule: `Use classes to avoid deep nesting and for specific context. Except when dealing with 3rd-party plugins/CMS-content-generated HTML nodes where customizing classes is not possible.`,
+    summary: `Use classes to avoid deep nesting and for specific context`,
     example: 
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
@@ -380,6 +400,7 @@ const cssRules = [
   },
   {
     rule: `Generic Nesting Guide`,
+    summary: `Generic Nesting Guide`,
     example: 
 <SyntaxHighlighter {...cssHighlightProps}>
 {`.page-container { //i.e. <main class="home">
@@ -408,7 +429,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Declare font variants as font-weights and not separate font-families`,
+    rule: `Declare font variants as weights and not separate font families`,
+    summary: `Font variants as weights, not separate families`,
     example: 
 <SyntaxHighlighter {...cssHighlightProps}>
 {`@include font-face($font-proximanova, $base-url + 'fonts/', 'proxima-light', 'proximia-light', 300);
@@ -418,7 +440,8 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    rule: `Always use colors as variable, all located at _variables.scss. Use contextual phrases for primary and secondary palettes. Use numerics for neutral shades in increments of 100's`,
+    rule: `Always use variables for colors, all located at _variables.scss. Use contextual phrases for primary and secondary palettes. Use numerics for neutral shades in increments of 100's`,
+    summary: `Use variables for colors, named based on context`,
     example: 
 <SyntaxHighlighter {...cssHighlightProps}>
 {`$primary-color: #ffc30b;
@@ -431,17 +454,8 @@ $gray-400: ...`}
 </SyntaxHighlighter>
   },
   {
-    rule: `Always use colors as variable, all located at _variables.scss`,
-    example: 
-<SyntaxHighlighter {...cssHighlightProps}>
-{`$yellow: #ffc30b;
-$yellow-lemon: #fadase;
-$yellow-mellow: #f8de7e;`}    
-</SyntaxHighlighter>
-  },
-  {
-    rule: <div>
-      Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values. Common overused shorthand properties include:
+    rule: <span>
+      Limit shorthand declarations to instances where you must explicitly set all the available values. Common overused shorthand properties include:
         <SyntaxHighlighter {...cssHighlightProps}>
 {`padding
 margin
@@ -450,8 +464,9 @@ background
 border
 border-radius`}
         </SyntaxHighlighter>
-        Often times we don't need to set all the values a shorthand property represents. For example, HTML headings only set top and bottom margin, so when necessary, only override those two values. Excessive use of shorthand properties often leads to sloppier code with unnecessary overrides and unintended side effects.
-    </div>,
+        Often, we don't need to set all the values a shorthand property represents. For example, HTML headings only set top and bottom margin, so when necessary, only override those two values. Excessive use of shorthand properties often leads to sloppier code with unnecessary overrides and unintended side effects.
+    </span>,
+    summary: `Limit use of shorthand declarations`,
     example: <SyntaxHighlighter {...cssHighlightProps}>
 {`//DON'T
 .class {
@@ -468,6 +483,7 @@ border-radius`}
   },
   {
     rule: `Whenever efficient, use sass loops and native sass functions.`,
+    summary: `Use sass loops and functions`,
     example: <div>
 <SyntaxHighlighter {...cssHighlightProps}>
 {`//Example:
@@ -502,7 +518,8 @@ $my-item: red green blue;
 </div>
   },
   {
-    rule: `For dynamic styles, avoid the CSS-in-JS approach. Manipulate classes instead.`,
+    rule: `For dynamic styles, avoid CSS-in-JS. Toggle classes instead.`,
+    summary: `Avoid CSS-in-JS`,
     example: <div>
 <SyntaxHighlighter {...htmlHighlightProps}>
 {`<!-- DON'T -->
@@ -1027,64 +1044,150 @@ const htmlRules = [
 </SyntaxHighlighter>
   },
 ]
-export default class Home extends Component {
-  render() {    
-    return (
-      <div className="container">
-        <div className="section category">Golden Rule</div>
-        <div className="section">
-          <div className="rule">
-            Enforce these agreed upon guidelines at all times. Small or large, call out what's incorrect. This applies for everyone, project members and leaders alike.
-          </div>
-          <div className="sample hljs">
-            Every line of code should appear to be written by a single person, no matter the number of contributors.
-          </div>
-        </div>
 
-        <div className="section category">Silver Rule</div>
-        <div className="section">
-          <div className="rule">
-            Special client requests supercede any of the rules below.
-          </div>
-          <div className="sample hljs">
-            This is held true for all and any rule types.
-          </div>
-        </div>
+const slugify = text => text.toString().toLowerCase().trim()
+  .replace(/&/g, '-and-') // Replace & with 'and'
+  .replace(/[\s\W-]+/g, '-') // Replace spaces, non-word characters and dashes with a single dash (-)
 
-        <div className="section category">CSS Rules</div>
-        {
-          cssRules.map((item, i) => (
-            <div className="section" key={i}>
-              <div className="rule">
-                {item.rule}
-              </div>
-              <div className="sample">
-                {item.example}
-              </div>
-            </div>		
-          ))
-        }
+const copyStringToClipboard = str => {
+  // Create new element
+  var el = document.createElement('textarea');
+  // Set value (string to be copied)
+  el.value = str;
+  // Set non-editable to avoid focus and move outside of view
+  el.setAttribute('readonly', '');
+  el.style = {position: 'absolute', left: '-9999px'};
+  document.body.appendChild(el);
+  // Select text inside element
+  el.select();
+  // Copy text to clipboard
+  document.execCommand('copy');
+  // Remove temporary element
+  document.body.removeChild(el);
+}
 
-        <div className="section category">CSS Style Declaration Ideal Order</div>
-        <div className="section rule-monocol">
-          {cssStyeDeclaration}
-        </div>
-
-        <div className="section category">HTML Rules</div>
-        {
-          htmlRules.map((item, i) => (
-            <div className="section" key={i}>
-              <div className="rule">
-                {item.rule}
-              </div>
-              <div className="sample">
-                {item.example}
-              </div>
-            </div>		
-          ))
-        }
-        
-      </div>
-    )
+export default function Home() {    
+  const scrollToTop = () => {
+    window.scrollTo(0,0)
   }
+
+  const [hovered, setHovered] = useState(null)
+
+  const mouseEnter = (i) => {
+    console.log(i)
+    setHovered(i)
+  }
+
+  const mouseLeave = () => {
+    setHovered(null)
+  }
+
+  const copyUrl = hash => {
+    const baseUrl = `https://psdwizard.github.io/coding-guidelines/#/`
+    copyStringToClipboard(`${baseUrl}#${hash}`)
+  }
+
+  return (
+    <div className="container">
+      <div className="back-to-top" onClick={scrollToTop}>
+        <img src={require('../assets/images/up-caret.svg')} className="caret" alt="Up caret" width="25" />
+        <img src={require('../assets/images/nyan.png')} className="cat" alt="Fullstack HQ mascot" />
+      </div>
+      <div className="section category">Summary</div>
+      <div className="section">
+        <ul>
+          <li>
+            <HashLink to="#golden-rule">Golden Rule: Every line of code should appear to be written by a single person</HashLink>
+          </li>
+          <li>
+            <HashLink to="#silver-rule">Silver Rule: Special client requests supercede any of the rules below.</HashLink>
+          </li>
+          <li>
+            <HashLink to="#css-rules">CSS Rules:</HashLink>
+            <ul>
+              {cssRules.map((item, i) => 
+                <li key={i}>
+                  <HashLink to={`#${slugify(item.summary)}`}>
+                    {item.summary}
+                  </HashLink>
+                </li>
+              )}
+            </ul>
+          </li>
+        </ul>
+      </div>
+      
+      <div className="section category" id="golden-rule">Golden Rule</div>
+      <div className="section">
+        <div className="rule">
+          Enforce these agreed upon guidelines at all times. Small or large, call out what's incorrect. This applies for everyone, project members and leaders alike.
+        </div>
+        <div className="sample hljs">
+          Every line of code should appear to be written by a single person, no matter the number of contributors.
+        </div>
+      </div>
+
+      <div className="section category" id="silver-rule">Silver Rule</div>
+      <div className="section">
+        <div className="rule">
+          Special client requests supercede any of the rules below.
+        </div>
+        <div className="sample hljs">
+          This is held true for all and any rule types.
+        </div>
+      </div>
+
+      <div className="section category" id="css-rules">CSS Rules</div>
+      
+      {cssRules.map((item, i) => (
+        <div 
+          key={i} 
+          id={slugify(item.summary)}
+          className="section"
+        >
+          <div className="rule">
+            <span onMouseEnter={() => mouseEnter(i)} onMouseLeave={() => mouseLeave(i)}>
+              {item.rule} 
+              <span>
+                &nbsp;
+                <HashLink 
+                  to={`#${slugify(item.summary)}`} 
+                  className={clsx(
+                    'rule-hover-scope',
+                    {'is-active': hovered === i}
+                  )}
+                  onClick={() => copyUrl(slugify(item.summary))}
+                >
+                  #
+                </HashLink>
+              </span>
+            </span>
+          </div>
+          <div className="sample">
+            {item.example}
+          </div>
+        </div>		
+      ))}
+
+      <div className="section category">CSS Style Declaration Ideal Order</div>
+      <div className="section rule-monocol">
+        {cssStyeDeclaration}
+      </div>
+
+      <div className="section category">HTML Rules</div>
+      {
+        htmlRules.map((item, i) => (
+          <div className="section" key={i}>
+            <div className="rule">
+              {item.rule}
+            </div>
+            <div className="sample">
+              {item.example}
+            </div>
+          </div>		
+        ))
+      }
+      
+    </div>
+  )
 }
