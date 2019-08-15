@@ -25,9 +25,35 @@
   width: 100%;
 }
 
+.hash {
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s;
+
+  &--lg {
+    margin-left: 15px;
+  }
+
+  &--sm {
+    margin-left: 3px;
+  }
+}
+
+.hash-parent {
+  &:hover {
+    .hash {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+.summary-list {
+  list-style-position: inside
+}
+
 .section {
   display: flex;
-  width: 100%;
 
   background-color: $blue;
   color: $off-white;
@@ -35,49 +61,48 @@
   border-top: 1px $dark-blue solid;
 }
 
-.category {
-  padding: 40px 40px;
+.section-flex {
+  display: flex;
+}
 
-  font-size: 48px;
+.category {
+  padding: 20px 0;
+
+  font-size: 36px;
 
   background-color: darken($blue, 5%);
 }
 
-.rule {
-  flex: 0 0 50%;
-  padding: 60px 40px;
-
-  font-size: 24px;
+.base-width {
+  margin: 0 auto;
+  padding: 0 40px;
+  width: $base-width;
 }
 
-.rule-hover-scope {
-  opacity: 0;
-  pointer-events: none;
-  transition: .2s;
+.rule {
+  flex: 0 0 50%;
+  padding: 40px 40px 40px 0;
 
-  &.is-active {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  font-size: 20px;
 }
 
 .rule-monocol {
   padding: 60px 40px;
 
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .sample {
   flex: 0 0 50%;
-  padding: 60px 40px;
+  padding: 40px 0 40px 40px;
   overflow: hidden;
 
-  font-size: 24px;
+  font-size: 20px;
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
