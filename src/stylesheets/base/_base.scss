@@ -12,6 +12,11 @@ button {
 
 a {
   text-decoration: none;
+  color: $pastel-blue;
+
+  &:hover {
+    color: $light-blue;
+  }
 }
 
 .btn,

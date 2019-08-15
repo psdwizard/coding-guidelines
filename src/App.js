@@ -15,14 +15,12 @@ class App extends Component {
     return (
       <HashRouter basename="/">
         <div className="App">
-          <Header />
-
+          <Route path="/" exact component={Header} />
+          
           <Switch>
             <Route path="/" exact component={Home} />
             <Route component={NoRouteMatch} />
           </Switch>
-
-          {/* <Footer /> */}
         </div>
       </HashRouter>
     );
