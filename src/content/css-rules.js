@@ -5,7 +5,6 @@ import { cssHighlightProps, htmlHighlightProps } from '../common/highlighter-con
 
 const cssRules = [
   {
-    id: `css-9sagoz2o7e6a`,
     rule: `Add a line break between selectors. Even when they only have a single css property.`,
     summary: `Add a line break between selectors`,
     example:
@@ -21,7 +20,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-5p69zdh7nan6`,
     rule: `Avoid !important. Use it only as an absolute last resort.`,
     summary: `Avoid !important`,
     example:
@@ -42,7 +40,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-t7r5rskpfrrn`,
     rule: `Configure dev environment to soft tabs with two (2) spaces.`,
     summary: `Use soft tabs, two spaces`,
     example:
@@ -53,7 +50,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-modkzebzonn7`,
     rule: `When grouping selectors, keep individual selectors to a single line.`,
     summary: `Keep individual selectors to a single line`,
     example:
@@ -72,7 +68,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-mcq8qqozep29`,
     rule: <span>No spaces after commas within <SyntaxHighlighter {...cssHighlightProps} CodeTag="span" PreTag="span">rgb(), rgba(), hsl(), hsla(), or rect()</SyntaxHighlighter> values. This differentiates multiple color values (comma, no space) versus multiple property values (comma with space).</span>,
     summary: `No spaces within color function values`,
     example:
@@ -90,7 +85,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-jeuicqetm8y8`,
     rule: `No leading zeroes for property values or color parameters.`,
     summary: `No leading zeroes`,
     example: 
@@ -112,7 +106,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-aqe6tsq9gpkf`,
     rule: `No units for zeroes (margin: 0; instead of margin: 0px;).`,
     summary: `No units for zeroes`,
     example: 
@@ -130,7 +123,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-q33j3fssomkf`,
     rule: `Use shorthand hex values where possible (e.g., #fff instead of #ffffff).`,
     summary: `Use shorthand hex where possible`,
     example:
@@ -148,7 +140,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-as97uagrm4kc`,
     rule: `Lowercase all hex values (e.g., #fff).`,
     summary: `Lowercase all hex`,
     example:
@@ -166,7 +157,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-5yk6uit5fgku`,
     rule: `Quote attribute values in selectors, e.g., input[type=”text”]. Avoid these selectors when input type is bound to change. Attribute value changes from HTML side will cause style inconsistencies.`,
     summary: `Quote attribute values in selectors`,
     example:
@@ -184,7 +174,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-fy9bfz35j5aa`,
     rule: `Add appropriate cursor types and transitions to all elements with special behaviors`,
     summary: `Add cursor types and transitions`,
     example:
@@ -198,7 +187,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-iyaxidb4eawp`,
     rule: `Keep classes lowercase and use dashes (not underscores or camelCase).`,
     summary: `Keep classes lowercase and use dashes`,
     example:
@@ -217,7 +205,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-mn9v9efxe2ud`,
     rule: `Keep selectors short and strive to limit the number of elements in each selector to three.`,
     summary: `Keep selectors short`,
     example:
@@ -235,7 +222,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-ffeojzxc2854`,
     rule: `Put a single space between the property and value and no space between the property and the colon.`,
     summary: `Put a single space between property and value`,
     example:
@@ -261,7 +247,6 @@ const cssRules = [
   //   rule: `Mixins are always after the Miscellaneous section for sass (e.g., @include, @extend).`,
   // },
   {
-    id: `css-k8sm8i8j89gk`,
     rule: `Use @extend at the beginning, right after the selector, before declaring other property values. Use other mixins like @include as needed. Be careful with @extend and other custom mixins. Use @extend only when the style is certainly extendable (e.g. buttons, links, etc.)`,
     summary: `Use @extend at the beginning`,
     example:
@@ -280,7 +265,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-ke5jd5qdrdkq`,
     rule: `Put all media queries in a block at the very end even if they declare one property only. Put media queries at the parent level, never nested as a child. Arrange from large to small.`,
     summary: `Put all media queries at end, at parent level. Arranged large to small`,
     example:
@@ -312,7 +296,6 @@ const cssRules = [
   // 	rule: `The rule above can be overruled when the query only applies to a single selector.`,
   // },
   {
-    id: `css-niheps8fwjzy`,
     rule: `Nest smartly. Do it only if the children are extremely dependent on a parent element`,
     summary: `Nest smartly`,
     example: 
@@ -353,7 +336,7 @@ const cssRules = [
   ul {
     ...
   }
-  
+
   li {
     ...
   }
@@ -361,7 +344,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-ejwd9sdm8xb4`,
     rule: `Use classes to avoid deep nesting and for specific context. Except when dealing with 3rd-party plugins/CMS-content-generated HTML nodes where customizing classes is not possible.`,
     summary: `Use classes to avoid deep nesting and for specific context`,
     example: 
@@ -394,7 +376,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-es8xh2uw9fin`,
     rule: `Generic Nesting Guide`,
     summary: `Generic Nesting Guide`,
     example: 
@@ -425,7 +406,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-p69yoayn9onr`,
     rule: `Declare font variants as weights and not separate font families`,
     summary: `Font variants as weights, not separate families`,
     example: 
@@ -437,7 +417,6 @@ const cssRules = [
 </SyntaxHighlighter>
   },
   {
-    id: `css-5tind3dwkpfk`,
     rule: `Always use variables for colors, all located at _variables.scss. Use contextual phrases for primary and secondary palettes. Use numerics for neutral shades in increments of 100's`,
     summary: `Use variables for colors, named based on context`,
     example: 
@@ -452,7 +431,6 @@ $gray-400: ...`}
 </SyntaxHighlighter>
   },
   {
-    id: `css-smv7gt6e3kta`,
     rule: <span>
       Limit shorthand declarations to instances where you must explicitly set all the available values. Common overused shorthand properties include:
         <SyntaxHighlighter {...cssHighlightProps}>
@@ -481,7 +459,6 @@ border-radius`}
 </SyntaxHighlighter>
   },
   {
-    id: `css-5ppbc5hrpefn`,
     rule: `Whenever efficient, use sass loops and native sass functions.`,
     summary: `Use sass loops and functions`,
     example: <div>
@@ -518,7 +495,6 @@ $my-item: red green blue;
 </div>
   },
   {
-    id: `css-7cehe46ffcyx`,
     rule: `For dynamic styles, avoid CSS-in-JS. Toggle classes instead.`,
     summary: `Avoid CSS-in-JS`,
     example: <div>

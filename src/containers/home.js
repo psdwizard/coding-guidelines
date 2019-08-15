@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HashLink } from 'react-router-hash-link'
+
+import stickybits from 'stickybits'
 
 import '../stylesheets/main.scss'
 import cssRules from '../content/css-rules'
@@ -63,6 +65,11 @@ function Home() {
     window.scrollTo(0,0)
   }
 
+  useEffect(() =>{
+    console.log(stickybits)
+    stickybits('.category')
+  }, [])
+
   return (
     <div className="container">
       <div className="back-to-top" onClick={scrollToTop}>
@@ -82,6 +89,9 @@ function Home() {
           </li>
           <li>
             <HashLink to="#silver-rule">Silver Rule: Special client requests supercede any of the rules below.</HashLink>
+          </li>
+          <li>
+            <HashLink to="#declaration-order">CSS Style Declaration Ideal Order</HashLink>
           </li>
           <li>
             <HashLink to="#css-rules">CSS Rules:</HashLink>
