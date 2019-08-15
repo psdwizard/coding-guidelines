@@ -9,14 +9,35 @@ import cssStyeDeclaration from '../content/css-declaration-order'
 import htmlRules from '../content/html-rules'
 import { copyStringToClipboard, slugify } from '../common/utils'
 
+function OffsetHashLink(props) {
+  const scrollWithOffset = (el, offset) => {
+    const elementPosition = el.offsetTop - offset
+
+    window.scroll({
+      top: elementPosition,
+      left: 0,
+    })
+  }
+
+  return (
+    <HashLink
+      {...props}
+      scroll={el => scrollWithOffset(el, props.offset === false ? 0 : 90)}
+    >
+      {props.children}  
+    </HashLink>
+  )
+}
+
 function CategoryHash(props) {
   return (
-    <HashLink 
+    <OffsetHashLink 
       to={`#${props.to}`} 
       className={'hash hash--lg'}
+      offset={false}
     >
       #
-    </HashLink>
+    </OffsetHashLink>
   )
 }
 
@@ -40,13 +61,13 @@ function RuleIteration(props) {
                 {item.rule} 
                 <span>
                   &nbsp;
-                  <HashLink 
+                  <OffsetHashLink 
                     to={`#${slugify(item.summary)}`} 
                     className="hash hash--sm"
                     onClick={() => copyUrl(slugify(item.summary))}
                   >
                     #
-                  </HashLink>
+                  </OffsetHashLink>
                 </span>
               </span>
             </div>
@@ -85,34 +106,34 @@ function Home() {
       <div className="section">
         <ul className="base-width summary-list rule-monocol">
           <li>
-            <HashLink to="#golden-rule">Golden Rule: Every line of code should appear to be written by a single person</HashLink>
+            <OffsetHashLink to="#golden-rule" offset={false}>Golden Rule: Every line of code should appear to be written by a single person</OffsetHashLink>
           </li>
           <li>
-            <HashLink to="#silver-rule">Silver Rule: Special client requests supercede any of the rules below.</HashLink>
+            <OffsetHashLink to="#silver-rule" offset={false}>Silver Rule: Special client requests supercede any of the rules below.</OffsetHashLink>
           </li>
           <li>
-            <HashLink to="#declaration-order">CSS Style Declaration Ideal Order</HashLink>
+            <OffsetHashLink to="#declaration-order" offset={false}>CSS Style Declaration Ideal Order</OffsetHashLink>
           </li>
           <li>
-            <HashLink to="#css-rules">CSS Rules:</HashLink>
+            <OffsetHashLink to="#css-rules" offset={false}>CSS Rules:</OffsetHashLink>
             <ul>
               {cssRules.map((item, i) => 
                 <li key={i}>
-                  <HashLink to={`#${slugify(item.summary)}`}>
+                  <OffsetHashLink to={`#${slugify(item.summary)}`}>
                     {item.summary}
-                  </HashLink>
+                  </OffsetHashLink>
                 </li>
               )}
             </ul>
           </li>
           <li>
-            <HashLink to="#html-rules">HTML Rules: </HashLink>
+            <OffsetHashLink to="#html-rules" offset={false}>HTML Rules: </OffsetHashLink>
             <ul>
               {htmlRules.map((item, i) => 
                 <li key={i}>
-                  <HashLink to={`#${slugify(item.summary)}`}>
+                  <OffsetHashLink to={`#${slugify(item.summary)}`}>
                     {item.summary}
-                  </HashLink>
+                  </OffsetHashLink>
                 </li>
               )}
             </ul>
