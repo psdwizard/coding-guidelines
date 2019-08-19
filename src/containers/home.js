@@ -16,6 +16,7 @@ function OffsetHashLink(props) {
     window.scroll({
       top: elementPosition,
       left: 0,
+      behavior: 'smooth'
     })
   }
 
@@ -83,7 +84,11 @@ function RuleIteration(props) {
 
 function Home() {    
   const scrollToTop = () => {
-    window.scrollTo(0,0)
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
   }
 
   useEffect(() =>{
