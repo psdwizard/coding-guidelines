@@ -18,3 +18,25 @@ export const copyStringToClipboard = str => {
 export const slugify = text => text.toString().toLowerCase().trim()
   .replace(/&/g, '-and-') // Replace & with 'and'
   .replace(/[\s\W-]+/g, '-') // Replace spaces, non-word characters and dashes with a single dash (-)
+
+export const scrollWithOffset = (el, offset, animate = true) => {
+  const elementPosition = el.offsetTop - offset
+  const scrollSettings = {
+    top: elementPosition,
+    left: 0,
+  }
+
+  if (animate) {
+    scrollSettings.behavior = 'smooth'
+  }
+
+  window.scroll(scrollSettings)
+}
+
+export const scrollToTop = () => {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  })
+}

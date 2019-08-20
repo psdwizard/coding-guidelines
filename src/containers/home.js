@@ -7,19 +7,14 @@ import '../stylesheets/main.scss'
 import cssRules from '../content/css-rules'
 import cssStyeDeclaration from '../content/css-declaration-order'
 import htmlRules from '../content/html-rules'
-import { copyStringToClipboard, slugify } from '../common/utils'
+import { 
+  copyStringToClipboard, 
+  slugify, 
+  scrollWithOffset,
+  scrollToTop
+} from '../common/utils'
 
 function OffsetHashLink(props) {
-  const scrollWithOffset = (el, offset) => {
-    const elementPosition = el.offsetTop - offset
-
-    window.scroll({
-      top: elementPosition,
-      left: 0,
-      behavior: 'smooth'
-    })
-  }
-
   return (
     <HashLink
       {...props}
@@ -83,17 +78,21 @@ function RuleIteration(props) {
 }
 
 function Home() {    
-  const scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    })
-  }
-
   useEffect(() =>{
-    console.log(stickybits)
     stickybits('.category')
+  }, [])
+
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash) {
+      const element = document.getElementById(`${hash.substring(3)}`)
+      if (element) {
+        console.log(element)
+        scrollWithOffset(element, element.classList.contains('category') ? 0 : 90)
+      }
+    } else {
+      scrollToTop()
+    }
   }, [])
 
   return (
